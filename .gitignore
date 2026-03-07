@@ -1,0 +1,63 @@
+# .gitignore -file for the ChessRobot project.
+# Some parts of this file have been generated using Gemini 3
+
+# ==========================
+# PYTHON $ RASPBERRY PI
+# ==========================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual ennvironments
+venv/
+env/
+.venv/
+.env
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ==========================================
+# KiCad
+# ==========================================
+
+# Temporary files and backups
+*.bck
+*.tmp
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*.kicad_pro-bak
+*-backups/
+*-save.pro
+*-save.kicad_pcb
+*.lck
+
+# Component library cache
+fp-info-cache
+
+# Netlist and routing files (optional, remove if you want to track these)
+*.net
+*.ses
+
+# Autorouter files
+*.rules
+
+# ==========================================
+# OS generated files
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
