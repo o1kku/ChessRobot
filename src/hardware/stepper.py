@@ -8,8 +8,9 @@ try:
     from gpiozero import OutputDevice
 except ImportError:
     print("Warning: gpiozero is not available. Entering mock-mode.")
-    OutputDevice = None
-
+    class OutputDevice:
+        def __init__(self): self.pin = pin; self.value = 0
+        def __repr__(self): return f"Pin({self.pin})"
 
 class StepMotor:
     """
@@ -36,11 +37,14 @@ class StepMotor:
         self.delay = delay
         self.pins = [OutputDevice(pin) for pin in pins]
 
-    def _make_step(self):
+    def _make_step(self, sequence):
         """
         Private method to make the motor do one step.
+
+        Args:
+            sequence (list): _STEP_SEQUENCE in correct order
         """
-        for step in self._STEP_SEQUENCE:
+        for step in sequence:
             for pin, value in zip(self.pins, step):
                 pin.value = value
                 time.sleep(self.delay)
@@ -53,6 +57,9 @@ class StepMotor:
             steps (int): The number of steps to move.
             direction (int): 1 for closer, -1 for further.
         """
+        # Direction
+        sequence = self._STEP_SEQUENCE if direction == 1 else self._STEP_SEQUENCE[::-1]
+
         # Make a step steps_nbr times in correct direction
-        for _ in range(steps_nbr*direction):
-            self._make_step()
+        for _ in range(steps_nbr):
+            self._make_step(sequence)
