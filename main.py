@@ -1,6 +1,6 @@
 """
 This program provides a main interface for
-controlling the ChessRobot. 
+controlling the ChessRobot on Raspberry Pi 5. 
 
 This is an init version for testing the
 motors. The code below is an example code made by 
@@ -12,20 +12,21 @@ from gpiozero import OutputDevice
 from time import sleep
 
 # Define GPIO pins
-IN1 = OutputDevice(17)
-IN2 = OutputDevice(18)
-IN3 = OutputDevice(27)
-IN4 = OutputDevice(22)
+IN1 = OutputDevice(29)
+IN2 = OutputDevice(31)
+IN3 = OutputDevice(35)
+IN4 = OutputDevice(37)
 
-# Define step sequence
+# Define step sequence for half step
+# To make it a one step, comment out lines with two ones
 step_seq = [
-    [1, 0, 0, 1],
+    #[1, 0, 0, 1],
     [1, 0, 0, 0],
-    [1, 1, 0, 0],
+    #[1, 1, 0, 0],
     [0, 1, 0, 0],
-    [0, 1, 1, 0],
+    #[0, 1, 1, 0],
     [0, 0, 1, 0],
-    [0, 0, 1, 1],
+    #[0, 0, 1, 1],
     [0, 0, 0, 1]
 ]
 
@@ -45,7 +46,7 @@ try:
     while True:
         stepper_step(0.001, 512)  # Rotate forward
         sleep(1)
-        stepper_step(0.001, -512) # Rotate backward
+        #stepper_step(0.001, -512) # Rotate backward
         sleep(1)
 except KeyboardInterrupt:
     pass
