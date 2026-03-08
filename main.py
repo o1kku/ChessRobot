@@ -1,21 +1,24 @@
 """
 This program provides a main interface for
-controlling the ChessRobot. 
+controlling the ChessRobot on Raspberry Pi 5. 
 
 This is an init version for testing the
-motors. The code below is an example code made by 
-Krishna in June 15, 2024 and can be found from:
-https://steppermotor.net/control-stepper-motor-with-raspberry-pi/#Raspberry_Pi_Python_and_a_TB6600_Stepper_Motor_Driver
+motors.
 """
 
 from gpiozero import OutputDevice
 from time import sleep
 
 # Define GPIO pins
-IN1 = OutputDevice(17)
-IN2 = OutputDevice(18)
-IN3 = OutputDevice(27)
-IN4 = OutputDevice(22)
+IN1 = OutputDevice(5)
+IN2 = OutputDevice(6)
+IN3 = OutputDevice(19)
+IN4 = OutputDevice(26)
+
+IN5 = OutputDevice(7)
+IN6 = OutputDevice(1)
+IN7 = OutputDevice(11)
+IN8 = OutputDevice(0)
 
 # Define step sequence
 step_seq = [
@@ -30,10 +33,15 @@ step_seq = [
 ]
 
 def set_step(w1, w2, w3, w4):
-    IN1.value = w1
+    """IN1.value = w1
     IN2.value = w2
     IN3.value = w3
     IN4.value = w4
+"""
+    IN5.value = w1
+    IN6.value = w2
+    IN7.value = w3
+    IN8.value = w4
 
 def stepper_step(delay, steps):
     for _ in range(steps):
@@ -43,9 +51,9 @@ def stepper_step(delay, steps):
 
 try:
     while True:
-        stepper_step(0.001, 512)  # Rotate forward
+        stepper_step(0.0009, 512)  # Rotate forward
         sleep(1)
-        stepper_step(0.001, -512) # Rotate backward
-        sleep(1)
+        #stepper_step(0.001, -512) # Rotate backward
+        #sleep(1)
 except KeyboardInterrupt:
     pass
