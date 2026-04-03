@@ -5,10 +5,13 @@ A module for reading the state of a KW12-3 limit switch.
 try:
     from gpiozero import Button
 except ImportError:
-    print("Warning: gpiozero is not available. Entering mock-mode.")
+    print("Warning: gpiozero not found. LimitSwitch entering mock-mode.")
     class Button:
-        def __init__(self): self.pin = pin; self.value = 0
-        def __repr__(self): return f"Pin({self.pin})"
+        def __init__(self, pin, pull_up=True, bounce_time=0.05):
+            self.pin = pin
+            self.is_pressed = False
+            self.when_pressed = None
+            self.when_released = None
 
 
 class LimitSwitch:
