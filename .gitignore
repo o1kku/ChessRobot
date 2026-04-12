@@ -61,3 +61,10 @@ fp-info-cache
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+
+# ==========================================
+# Claude related
+# ==========================================
+.claude/
+CLAUDE.md

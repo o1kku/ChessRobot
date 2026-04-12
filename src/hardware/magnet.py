@@ -24,7 +24,7 @@ except ImportError:
 
 class Electromagnet:
     """
-    A module to control a small electromagnet via a MOSFET switch.
+    A class to control a small electromagnet via a MOSFET switch.
     
     Attributes:
         pin (int): The GPIO pin number connected to the MOSFET Gate.

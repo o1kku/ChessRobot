@@ -65,7 +65,7 @@ class StepMotor:
         
     def step(self, steps_nbr, direction=1):
         """
-        Moves the motor by a pecified number of steps.
+        Moves the motor by a specified number of steps.
         
         :param steps: The number of steps to move.
         :param direction: 1 for clockwise, -1 for counterclockwise.

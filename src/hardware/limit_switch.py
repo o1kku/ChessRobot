@@ -24,7 +24,7 @@ class LimitSwitch:
         Initializes the limit switch.
         
         :param pin: The GPIO pin number.
-        :param bounce_time_sec: Time in seconds for software debouncing.
+        :param bounce_time: Time in seconds for software debouncing.
         """
         # pull_up=True enables the Raspberry Pi's internal pull-up resistor.
         self.switch = Button(pin, pull_up=True, bounce_time=bounce_time)
